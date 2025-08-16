@@ -1,0 +1,20 @@
+matillion_github_setup:
+  repo:
+    url: "https://github.com/<ORG>/<REPO>.git"   # or git@github.com:<ORG>/<REPO>.git for SSH
+    branch: "feature/matillion-push"             # avoid direct pushes to main if protected
+
+  authentication:
+    method: "https"    # options: https, ssh
+    https:
+      personal_access_token: "ghp_xxxxxx"        # generate from GitHub with 'repo' scope
+    ssh:
+      private_key_path: "~/.ssh/id_rsa"          # key generated on Matillion instance
+      public_key_added_to_repo: true             # must be added in GitHub → Settings → Deploy Keys
+
+  matillion:
+    version_control:
+      enable: true
+      commit_message: "Matillion pipeline update"
+      push_enabled: true
+
+  github_enterprise: false   # set true if using self-hosted GitHub
